@@ -22,7 +22,7 @@ launch the container using an explicit directory:
 docker run -it -v /my/repo:/src --workdir /src acarapetis/lazyjj
 ```
 
-To build from source:
+To build from source, clone this repo and run:
 
 ```sh
 docker build -t acarapetis/lazyjj .
