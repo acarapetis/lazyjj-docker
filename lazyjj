@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+
+repo=$(jj workspace root)
+wdir=$(realpath --relative-to="$repo" "$PWD")
+docker run -it -v "$repo":/src --workdir /src/"$wdir" acarapetis/lazyjj "$@"
