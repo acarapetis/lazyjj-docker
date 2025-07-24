@@ -7,4 +7,5 @@ RUN cargo install --locked lazyjj
 FROM scratch
 COPY --from=build /usr/local/cargo/bin/jj /usr/local/cargo/bin/lazyjj /bin/
 ENV PATH=/bin
+ENV XDG_CONFIG_HOME=/config
 ENTRYPOINT ["/bin/lazyjj"]

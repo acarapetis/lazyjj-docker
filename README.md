@@ -19,3 +19,9 @@ To build from source:
 ```sh
 docker build -t acarapetis/lazyjj .
 ```
+
+
+## Limitations
+
+Only designed to work with jj user config stored in $XDG_CONFIG_HOME/.config: if you're
+usign ~/.jjconfig.toml, please move it to ~/.config/jj/config.toml instead.

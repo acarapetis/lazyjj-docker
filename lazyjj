@@ -1,7 +1,19 @@
-#!/bin/sh
+#!/bin/bash
 
 set -eu
 
 repo=$(jj workspace root)
 wdir=$(realpath --relative-to="$repo" "$PWD")
-docker run -it --user "$(id -u):$(id -g)" -v "$repo":/src --workdir /src/"$wdir" acarapetis/lazyjj "$@"
+args=(
+    -it
+    --user
+    "$(id -u):$(id -g)"
+    -v "$repo":/src
+    --workdir /src/"$wdir"
+)
+
+cfg_home="${XDG_CONFIG_HOME-$HOME/.config}"
+if [ -d "$cfg_home/jj" ]; then
+    args+=(-v "$cfg_home/jj:/config/jj")
+fi
+docker run "${args[@]}" acarapetis/lazyjj "$@"
