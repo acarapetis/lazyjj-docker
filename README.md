@@ -1,11 +1,19 @@
 # lazyjj-docker
 
-A distroless docker image of lazyjj.
+A distroless docker image of lazyjj, and a wrapper script to run it easily.
 
-## Installation & Usage
+## Installation
 
-Download the shell script [lazyjj](./lazyjj) into anywhere on your PATH (e.g.
-~/.local/bin/), then type `lazyjj` from any jj repo.
+Download the bash script [lazyjj](./lazyjj) into anywhere on your PATH (e.g.
+~/.local/bin/), e.g.
+
+```sh
+curl -f https://raw.githubusercontent.com/acarapetis/lazyjj-docker/refs/heads/main/lazyjj \
+    -o ~/.local/bin/lazyjj && chmod +x ~/.local/bin/lazyjj
+```
+
+## Usage
+Type `lazyjj` from any jj repo.
 
 This script requires jj installed on your host to work - alternatively, you can manually
 launch the container using an explicit directory:
@@ -24,4 +32,4 @@ docker build -t acarapetis/lazyjj .
 ## Limitations
 
 Only designed to work with jj user config stored in $XDG_CONFIG_HOME/.config: if you're
-usign ~/.jjconfig.toml, please move it to ~/.config/jj/config.toml instead.
+using ~/.jjconfig.toml, please move it to ~/.config/jj/config.toml instead.
